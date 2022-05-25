@@ -78,4 +78,4 @@ The ones that definitely helped
 | Safe submission (sub2) | 0.8556 | 0.8071 |
 
 We also had around 20 subs which score > 0.82 on private LB and > 0.87 on public LB, but we didn't select them since we chose two subs in the following manner, -
-one is the best public LB and the other one with much lower thresholds to prevent the shake-up on group2 birds (this sub also sc
+one is the best public LB and the other one with much lower thresholds to prevent the shake-up on group2 birds, this sub also happend to be placed 3rd, we're happy :)
