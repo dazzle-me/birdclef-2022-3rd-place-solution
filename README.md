@@ -66,3 +66,16 @@ The ones that definitely helped
 * use weighted BCE w/ weights proportionally to number of class appearance in dataset
 * random power as in [vlomme's 2021 solution](https://www.kaggle.com/competitions/birdclef-2021/discussion/243351)
 * coord-conv as in [2nd place rainforest solution](https://www.kaggle.com/competitions/rfcx-species-audio-detection/discussion/220760)
+
+### Final results
+
+| Name                    | Public LB   | Private LB | 
+| -----------             | ----------- | ---------- |
+| CNN model (no augs)     | 0.7715      | 0.7278     |
+| Best slime ensemble (CNN only w/ BCE loss)| 0.8327        | 0.7898 |
+| Combine UEMU's SED w/ focal-loss & slime's CNN w/ BCE Loss using bird split mentioned above | 0.8532             | 0.8052 |
+| Same as above, but add more CNNs w/ BCE loss and SED w/ BCE loss to group1 birds (best public LB, sub1) | 0.8750  | 0.8126 |
+| Safe submission (sub2) | 0.8556 | 0.8071 |
+
+We also had around 20 subs which score > 0.82 on private LB and > 0.87 on public LB, but we didn't select them since we chose two subs in the following manner, -
+one is the best public LB and the other one with much lower thresholds to prevent the shake-up on group2 birds (this sub also sc
