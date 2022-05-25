@@ -7,7 +7,7 @@ We've worked hard until the end and thanks to that we managed to secure 3rd plac
 
 Now for our approach, the key points are the following:
 
-* Use CNN proposed by [2nd place BirdCLEF 2021](https://www.kaggle.com/competitions/birdclef-2021/discussion/243463)
+* Use CNN proposed in [2nd place BirdCLEF 2021 solution](https://www.kaggle.com/competitions/birdclef-2021/discussion/243463)
 * Use SED model & training scheme proposed in [tattaka's 4th place solution](https://www.kaggle.com/competitions/birdclef-2021/discussion/243293)
 * Use pseudo-labels & hand-labels in SED model training
 * Divide scored birds into two sets and use different loss functions for training each one
