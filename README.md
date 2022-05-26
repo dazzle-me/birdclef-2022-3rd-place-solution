@@ -22,9 +22,11 @@ When we merged together, we looked on OOFs predictions produced by our models an
 From our observations, SED models w/ focal-loss tend to make more conservative predictions, and due to the loss design they don't miss small classes:
 
 Here in blue you can see SED model w/ focal-loss, and in pink CNN model trained w/ BCE loss
+
 ![image](https://user-images.githubusercontent.com/57013219/170329125-532a0640-cb54-4a81-9d8a-fadd4721d6ae.png)
 
 The same can be said about advantage of models which used BCE loss during training over models with focal-loss for the large classes 
+
 ![image](https://user-images.githubusercontent.com/57013219/170329065-9a9d4da1-1660-46d4-b25e-9419f451f63d.png)
 
 Therefore, we divided the birds into two groups according to the number of data and manual inspection of distribution plots of target-data as above, and used different models for them.
