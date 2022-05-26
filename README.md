@@ -45,13 +45,15 @@ Since the CNN model was used only for inference on large enough classes, it allo
 
 #### Training strategy
 
+* Use two front-ends:
+  * sr: 32000, window_size: 2048, hop_size: 512, fmin: 0, fmax: 16000, mel_bins: 256, power: 2, top_db=None
+  * sr: 32000, window_size: 1024, hop_size: 320, fmin: 50, fmax: 14000, mel_bins: 64, power: 2, top_db=None
 * Epochs: 40
 * backbone: tf_efficnetnet_b0_ns, tf_efficinetnetv2_s_in21k, resnet34, eca_nfnet_l0 
 * Optimizer: Adam, lr=3e-4, wd=0
 * Scheduler: CosineAnnealing w/o warm-up
 * Labels: use union of primary and secondary labels
 * Startify data: by primary label
-
 #### Augmentations
 
 The ones that definitely helped
@@ -80,8 +82,11 @@ For the Group1 model and the Group2 model, we changed the loss function, and the
 
 We couldn't find a good CV strategy, so most of the settings are decided by watching at public LB.
 
-#### Training strategy
+#### Training strategy 
 
+* Use two front-ends:
+  * sr: 32000, window_size: 2048, hop_size: 1024, fmin: 200, fmax: 14000, mel_bins: 224
+  * sr: 32000, window_size: 1024, hop_size: 512, fmin: 50, fmax: 14000, mel_bins: 128
 * Epochs: 30-40
 * Cropsize: 10-15s
 * backbone: seresnext26t_32x4d, resnet34, resnest50, tf_efficientnetv2s
@@ -90,6 +95,7 @@ We couldn't find a good CV strategy, so most of the settings are decided by watc
 * Scheduler: CosineAnnealing w/o warm-up
 * Labels: primary label=0.9995, secondary label=0.5000, other=0.0025
 * Startify data: by primary label
+
 
 #### Augmentations
 
