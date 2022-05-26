@@ -114,9 +114,9 @@ We couldn't find a good CV strategy, so most of the settings are decided by watc
 
 ### How to choose thresholds: 
   * The default threshold for every of 21 birds was decided by watching LB (in the end we used 0.05 for Group1 birds, but 0.04 gives >0.82 in private LB).
-  * The probability distribution of OOFs prediction for non-targetdata differs depending on the bird (see below figure),
+  * We manually set the threshold for "skylar" bird as 0.35, since our models trained with BCE loss predict it reliably.
+  * The probability distribution of OOFs prediction for non-targetdata when using focal-loss differs depending on the bird (see below figure),
   so we set the threshold for each bird from Group2 depending on the distribution. We adopted the value of 91 percentile of the distribution for these birds.
-  * We manually set the threshold for "skylar" bird as 0.35, since our models trained with BCE loss predict it reliably
   
   ![image](https://user-images.githubusercontent.com/57013219/170404672-c95e0539-21cd-4378-a4cd-75a8c756bdf4.png)
 
