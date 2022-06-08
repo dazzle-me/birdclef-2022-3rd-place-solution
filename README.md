@@ -92,3 +92,6 @@ python3 inference_on_dir.py --experiment-dir ./reproduced_experiments \
                             --fold 4 \
                             --cfg base_config.yaml                            
 ```
+
+## References
+* https://github.com/ChristofHenkel/kaggle-birdclef2021-2nd-place
