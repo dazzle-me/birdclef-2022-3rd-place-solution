@@ -18,6 +18,15 @@ cudnn version: 8.0.5.39
 
 NVIDIA Driver Version: 510.73.05
 
+
+## Data
+Aside from competition data, the solution used following external data:
+1) freefield1010 dataset
+2) BirdVox-DCASE-20k dataset
+3) no-call parts of 2021 training data
+
+Both datasets can be downloaded from [here](https://dcase.community/challenge2018/task-bird-audio-detection)
+
 ## Setup env
 ```
 cd docker
