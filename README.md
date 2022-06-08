@@ -1,5 +1,5 @@
 # birdclef-2022-3rd-place-solution
-This repository contains the CNN part of [BirdCLEF 2022 challenge](https://www.kaggle.com/competitions/birdclef-2022).
+This repository contains the CNN part of third place solution of [BirdCLEF 2022 challenge](https://www.kaggle.com/competitions/birdclef-2022).
 
 The overview of our solution can be found [here on Kaggle forum](https://www.kaggle.com/competitions/birdclef-2022/discussion/327193#1801701).
 
