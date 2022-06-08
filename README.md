@@ -59,7 +59,7 @@ change the highlighted part to this directory
 bash launch_docker.sh
 ```
 ## How to train models
-This scripts goes into saved sources, trains the models and copies them into 'save_dir' provided inside 'walk_and_train.sh' script
+This scripts goes into saved sources from 'exp-dir', trains the models and copies them into 'save-dir'
 ```
 bash launch_docker.sh
 cd ./bclf/
@@ -69,14 +69,14 @@ python3 walk_and_train.py --save-dir /workspace/bclf/reproduced_experiments \
 
 ## How to do inference
 arguments:
-* inference dir - test dir
-* experiment dir - dir with all experiments stored
-* exp - experiment name
-* fold - fold used as validation during training
-* thresholds - per-bird threshold values
-* num_workers - number of workers used in DataLoader
-* batch_size - batch size to speed-up inference
-* cfg - always 'base_config.yaml' except for 'new-metrics-exp-23', for this experiment pass 'tf_effnet_v2_s_in21k.yaml'
+* inference-dir: test dir
+* experiment-dir: dir with all experiments stored
+* exp:  experiment name
+* fold:  fold used as validation during training
+* thresholds:  per-bird threshold values
+* num-workers: number of workers used in DataLoader
+* batch_size:  batch size to speed-up inference
+* cfg:  always 'base_config.yaml' except for 'new-metrics-exp-23', for this experiment pass 'tf_effnet_v2_s_in21k.yaml'
 ```
 bash launch_docker.sh
 cd ./bclf/
