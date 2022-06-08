@@ -1,0 +1,12 @@
+numpy==1.22.3
+tqdm==4.60.0
+timm==0.4.12
+kornia==0.6.3
+pandas==0.25.3
+Pillow==9.0.1
+PyYAML==6.0
+scikit_learn==1.0.2
+tensorboard==2.8.0
+albumentations==1.1.0
+audiomentations==0.24.0
+torchlibrosa==0.0.9
