@@ -68,15 +68,15 @@ python3 walk_and_train.py --save-dir /workspace/bclf/reproduced_experiments \
 ```
 
 ## How to do inference
-This script does the inference on directory **'inference-dir'**, using saved mopdels from 'experiment-dir', 'exp' and fold 'fold', 
-also you can specify per-bird threshold by 'thresholds' value, 
-
-For all experiments you should provide 'cfg' file:
-
-For each one it's "base_config.yaml" except "new-metrics-exp-23", for this experiment you have to provide "tf_effnet_v2_s_in21k.yaml"
-
-'num-workers', 'batch-size' variables are used to increase inference speed
-
+arguments:
+* inference dir - test dir
+* experiment dir - dir with all experiments stored
+* exp - experiment name
+* fold - fold used as validation during training
+* thresholds - per-bird threshold values
+* num_workers - number of workers used in DataLoader
+* batch_size - batch size to speed-up inference
+* cfg - always 'base_config.yaml' except for 'new-metrics-exp-23', for this experiment pass 'tf_effnet_v2_s_in21k.yaml'
 ```
 bash launch_docker.sh
 cd ./bclf/
