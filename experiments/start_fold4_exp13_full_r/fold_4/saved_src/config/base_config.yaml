@@ -1,0 +1,183 @@
+## TODO:
+## augmentation idea:
+## CONCAT-MIX: (same methodology as mixup i.e. take \
+## random permutation then apply sample-wise)
+## 1) concat two samples from batch (on time-axis)
+## 2) label of concatenation is the union of labels
+## 3) increase factor for this training step by 2
+
+## NB: works only for the models that are allowed to take
+## input of arbitrary length (e.g. model used in my solution)
+
+general:
+  description: "effnet-v2"
+  weights_path: null
+  stage: 1
+  device: cuda:0
+  ## which fields from batch-dict to move to device
+  fields_to_move: ['audio', 'target', 'weight']
+
+  ## if using data from birdclef-2021 and birfclef-2022
+  #scored_birds : [5, 18, 20, 31, 150, 165, 167, 215, 217, 218, 219, 220, 228, 233, 237, 277, 307, 337, 406, 454, 498]
+
+  ## if using competition data (birdclef-2022) + wrong labels
+  # scored_birds : [153, 156, 157, 9, 44, 185, 47, 194, 196, 197, 64, 65, 199, 201, 202, 90, 219, 111, 239, 246, 253]
+
+  ## if using competition data (birdclef-2022) + treating all labels the same
+  scored_birds: [3, 6, 7, 9, 44, 46, 47, 60, 62, 63, 64, 65, 67, 70, 72, 90, 101, 111, 131, 141, 150]
+  target_field: target
+
+  exp_root: './experiments/'
+  exp_name: start_fold4_exp13
+  dev: False
+
+logger:
+  name: text_logger
+  output_file: log.txt
+  frequency: 25
+  window_size: 500
+
+data:
+  dir: /workspace/datasets/bird-clef/
+  audio_dir: /workspace/datasets/bird-clef/train_audio/
+
+  csv_file: train_folds.csv
+
+  use_secondary_labels: True
+  treat_secondary_unique: False
+  secondary_label_value: 1.0
+
+  label_smoothing: 0.0
+
+  crop_length: 30
+  val_crop_length: 30
+
+  min_audio_length: 0
+  max_audio_length: 9999999999999999
+
+  sample_rate: 32000
+  window_size: 1024
+  hop_size: 320
+  fmin: 50
+  fmax: 14000
+  mel_bins: 64
+  power: 2
+
+  mel_norm: True
+
+  batch_size: 8
+  val_batch_size: 32
+  num_workers: 12
+
+  pin_memory_train: False
+  pin_memory_val: False
+  use_sampler: False
+
+training:
+  save_val: True
+  epochs: 40
+  k_fold: False
+
+  folds: 5
+  train_folds: [0, 1, 2, 3]
+  val_folds: [4]
+
+  optimizer:
+    name: Adam
+    lr: 0.0004
+    wd: 0
+    momentum: 0.9
+
+  scheduler:
+    name: CosineLRScheduler
+    ReduceLROnPlateau:
+      mode: max
+      factor: 0.5
+      patience: 3
+      min_lr: 0.00001
+      delta: 0.005
+    CosineLRScheduler:
+      cycle_length: 40
+      cycle_decay: 0.17
+      cycle_limit: 13337
+      warmup_epochs: 0
+      lr_min: 0.00001
+      lr_warmup: 0.00005
+
+  use_fp16: True
+
+  # train_loss: BCEWithLogitsLoss
+  # val_loss: BCEWithLogitsLoss
+  train_loss: BCEWithLogitsLoss
+  val_loss: BCEWithLogitsLoss
+
+  scored_birds_scale: 1
+  augment_non_scored: True
+
+  clip_grad_norm: False
+  augs:
+    add_background_noise: True
+    random_power:
+      left: 2.0
+      right: 2.0
+
+    half_swap: 0.0
+    time_reverse: 0.0
+
+    mix_beta: 1.0
+    mixup: 1.0
+
+    white_noise: 0.0
+    concat_mix: 0.0
+
+    time_stretch: 0.0
+    time_stretch_bounds: [0.9, 1.1]
+
+## b6 - 2304
+## b5 - 2048
+## b0 - 1280
+
+model:
+  pretrained: True
+  name: Net
+  backbone: 'tf_efficientnetv2_s_in21k'
+  # backbone: tf_efficientnet_b0_ns
+  num_classes: 152
+  use_coord_conv: False
+  in_chans: 1
+
+loss:
+  BCEWithLogitsLoss:
+    input: 'logits_raw'
+    output: 'target'
+    reduction: 'none'
+  FocalBCEWithLogits:
+    input: 'logits_raw'
+    output: 'target'
+    reduction: 'none'
+    gamma: 2.0
+    alpha: 1.0
+
+utils:
+  save_handler:
+    mode: min
+    monitor: validation_loss
+    top_1: False
+    save_all: True
+
+  early_stopping:
+    mode: min
+    patience: 99999
+
+metrics:
+  f1:
+    input: logits
+    output: target
+    average: micro
+    threshold: 0.3
+  bird_metric:
+    input: logits
+    output: target
+    threshold: 0.05
+
+  collect: [f1, bird_metric]
