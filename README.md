@@ -25,7 +25,7 @@ Aside from competition data, the solution used following external data:
 2) BirdVox-DCASE-20k dataset
 3) no-call parts of 2021 training data
 
-Both datasets can be downloaded from [here](https://dcase.community/challenge2018/task-bird-audio-detection)
+Fist two datasets can be downloaded from [here](https://dcase.community/challenge2018/task-bird-audio-detection), the last one can be found [here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
 
 ## Setup env
 ```
