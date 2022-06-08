@@ -30,6 +30,7 @@ Aside from competition data, the solution used following external data:
 
 Fist two datasets can be downloaded from [here](https://dcase.community/challenge2018/task-bird-audio-detection), the last one can be found [here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
 
+Download all data above and place it into ./input/ dir.
 ## Setup env
 ```
 cd docker
