@@ -1,0 +1,31 @@
+├── docker
+│   ├── Dockerfile
+│   └── requirements.txt
+├── experiments
+│   ├── new-metrics-exp-17
+│   ├── new-metrics-exp-18
+│   ├── new-metrics-exp-19
+│   ├── new-metrics-exp-23
+│   ├── new-metrics-exp-9
+│   ├── start_fold4_exp13_full_r
+│   ├── start_fold4_exp15_full
+│   └── start_fold4_exp17_full
+│  
+├── inference_on_dir.py
+├── inference_on_dir.sh
+├── input
+│   ├── binary_ext1.csv
+│   ├── bird_count.json
+│   ├── df_train_oof.csv
+│   ├── eBird_Taxonomy_v2021.csv
+│   ├── merged_metadata.csv
+│   ├── sample_submission.csv
+│   ├── scored_birds.json
+│   ├── test.csv
+│   ├── train_folds.csv
+│   ├── train_indices.npy
+│   ├── train_metadata.csv
+│   └── val_indices.npy
+├── launch_docker.sh
+├── walk_and_train.py
+└── walk_and_train.sh
