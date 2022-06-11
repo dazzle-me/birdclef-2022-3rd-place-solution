@@ -28,7 +28,7 @@ Aside from competition data, the solution used following external data:
 2) aircrowd_2020 no-call dataset
 3) no-call parts of 2021 training data
 
-All of these datasets were kindly provided by the last year 2nd place participants[here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
+All of these datasets were kindly provided by the last year 2nd place participants [here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
 
 Download all data above and place it into ./input/ dir.
 ## Setup env
