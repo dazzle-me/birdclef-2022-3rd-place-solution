@@ -24,11 +24,11 @@ NVIDIA Driver Version: 510.73.05
 
 ## Data
 Aside from competition data, the solution used following external data:
-1) freefield1010 dataset
-2) BirdVox-DCASE-20k dataset
+1) freefield1010 no-call dataset
+2) aircrowd_2020 no-call dataset
 3) no-call parts of 2021 training data
 
-Fist two datasets can be downloaded from [here](https://dcase.community/challenge2018/task-bird-audio-detection), the last one can be found [here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
+All of these datasets were kindly provided by the last year 2nd place participants[here](https://www.kaggle.com/datasets/christofhenkel/birdclef2021-background-noise)
 
 Download all data above and place it into ./input/ dir.
 ## Setup env
